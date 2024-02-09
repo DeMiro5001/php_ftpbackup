@@ -60,6 +60,7 @@ $custom_name = isset($_POST['custom_name']) ? $_POST['custom_name'] : '';
     <h1>Backup and Restore Tool</h1>
 
     <?php if ($action === 'backup'): ?>
+
     <h2>Backup</h2>
     <form id="backup-form" method="post">
         <label for="ftp_server">FTP Server:</label>
@@ -74,3 +75,46 @@ $custom_name = isset($_POST['custom_name']) ? $_POST['custom_name'] : '';
         <label for="ftp_port">FTP Port:</label>
         <input type="number" id="ftp_port" name="ftp_port" value="<?php echo $ftp_port; ?>">
         <br>
+        <label for="local_dir">Local Directory:</label>
+        <input type="text" id="local_dir" name="local_dir" value="<?php echo $local_dir; ?>" required>
+        <br>
+        <label for="db_host">Database Host:</label>
+        <input type="text" id="db_host" name="db_host" value="<?php echo $db_host; ?>" required>
+        <br>
+        <label for="db_name">Database Name:</label>
+        <input type="text" id="db_name" name="db_name" value="<?php echo $db_name; ?>" required>
+        <br>
+        <label for="db_user">Database Username:</label>
+        <input type="text" id="db_user" name="db_user" value="<?php echo $db_user; ?>" required>
+        <br>
+        <label for="db_password">Database Password:</label>
+        <input type="password" id="db_password" name="db_password" required>
+        <br>
+        <label for="password">Encryption Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="custom_name">Custom File Name:</label>
+        <input type="text" id="custom_name" name="custom_name" value="<?php echo $custom_name; ?>" required>
+        <br>
+        <button type="submit" name="backup_submit">Start Backup</button>
+    </form>
+
+       <?php if ($action === 'restore'): ?>
+    <h2>Restore</h2>
+    <form id="restore-form" method="post" enctype="multipart/form-data">
+        <label for="restore_file">Encrypted File:</label>
+        <input type="file" id="restore_file" name="restore_file" required>
+        <br>
+        <label for="restore_password">Encryption Password:</label>
+        <input type="password" id="restore_password" name="restore_password" required>
+        <br>
+        <label for="custom_name">Custom File Name:</label>
+        <input type="text" id="custom_name" name="custom_name" value="<?php echo $custom_name; ?>" required>
+        <br>
+        <button type="submit" name="restore_submit">Start Restore</button>
+    </form>
+    <?php endif; ?>
+
+    </body>
+</html>
+
